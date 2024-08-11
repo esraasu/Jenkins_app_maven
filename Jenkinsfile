@@ -25,14 +25,14 @@ pipeline {
             }
         }
 
-        stage('Build Docker Image') {
+        stage('Deploy') {
             steps {
-                script {
-                    // Build Docker image using the JAR file
-                    def app = docker.build("${DOCKER_HUB_REPO}:${env.BUILD_NUMBER}")
-                }
+                // Deploy the application
+                // Example: Deploy to a server using SCP, or deploy to a container registry
+                sh  'scp -r target/  esraa@192.168.122.54:/home/esraa/test'
             }
         }
+    }
 
 
     }
