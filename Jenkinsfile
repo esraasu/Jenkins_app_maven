@@ -11,8 +11,8 @@ pipeline {
                    echo " testing the application ...."
                     sh 'mvn test'
                 }
+            }
         }
-
         stage(' Build Jar ') {
             steps {
                 script {
@@ -21,5 +21,8 @@ pipeline {
                 }
             }
         }
-  }
-}  
+    }
+ }  
+
+    
+    
