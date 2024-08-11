@@ -11,6 +11,7 @@ pipeline {
                    echo " testing the application ...."
                     sh 'mvn test'
                     sh 'ls'
+                    sh 'ls target'
                 }
             }
         }
