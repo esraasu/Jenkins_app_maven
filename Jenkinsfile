@@ -4,7 +4,7 @@ pipeline {
     tools {
         maven 'maven-3.9'
     }
-
+    stages {
         stage('Test') {
             steps {
                 // Run Maven tests
@@ -20,5 +20,5 @@ pipeline {
                 }
             }
         }
-}
-  
+  }
+}  
