@@ -7,9 +7,10 @@ pipeline {
     stages {
         stage('Test') {
             steps {
-                // Run Maven tests
-                sh 'mvn test'
-            }
+               script {
+                   echo " testing the application ...."
+                    sh 'mvn test'
+                }
         }
 
         stage(' Build Jar ') {
