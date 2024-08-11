@@ -23,7 +23,19 @@ pipeline {
                 }
             }
         }
+
+        stage('Build Docker Image') {
+            steps {
+                script {
+                    // Build Docker image using the JAR file
+                    def app = docker.build("${DOCKER_HUB_REPO}:${env.BUILD_NUMBER}")
+                }
+            }
+        }
+
+
     }
+
  }  
 
     
