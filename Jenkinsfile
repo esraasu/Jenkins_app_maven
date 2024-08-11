@@ -10,7 +10,7 @@ pipeline {
                script {
                    echo " testing the application ...."
                     sh 'mvn test'
-                    sh 'll'
+                    sh 'ls'
                 }
             }
         }
@@ -19,7 +19,7 @@ pipeline {
                 script {
                     echo 'building the application ....'
                     sh 'mvn package'
-                    sh 'll'
+                    sh 'ls'
                 }
             }
         }
