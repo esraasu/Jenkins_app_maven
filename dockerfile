@@ -11,5 +11,5 @@ COPY ./target/java-maven-app-*.jar  /usr/app/
 CMD java -jar java-maven-app-*.jar
 #ENTRYPOINT ["java", "-jar", "java-maven-app-*.jar"]
 
-EXPOSE 9000
+EXPOSE 8080
 
