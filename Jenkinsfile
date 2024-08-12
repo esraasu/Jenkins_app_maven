@@ -25,7 +25,7 @@ pipeline {
             }
         }
 
-        stage(' Build Docker Image ') {
+        stage('list docker image ') {
             steps {
                 script {
                     echo 'list container...'
@@ -39,7 +39,7 @@ pipeline {
                 script {
                     echo 'building the docker image...'
                     sh 'docker build -t maven-app .'
-                    
+                    sh 'docker ps -a'
                 }
             }
         }
