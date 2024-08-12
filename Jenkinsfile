@@ -4,6 +4,10 @@ pipeline {
     tools {
         maven 'maven-3.9'
     }
+    environment {
+        IMAGE_NAME = "maven-app" // Replace with the image name you want to remove
+        IMAGE_TAG = "latest" // Replace with the tag of the image you want to remove
+    }
     stages {
         stage('Test') {
             steps {
@@ -34,12 +38,21 @@ pipeline {
                 }
             }
         }
+        stage('Remove Image') {
+            steps {
+                script {
+                    // Remove the Docker image
+                    sh "docker rmi ${IMAGE_NAME}:${IMAGE_TAG}"
+                    echo "Docker image ${IMAGE_NAME}:${IMAGE_TAG} removed successfully."
+                }
+            }
+        }
         stage(' Build Docker Image ') {
             steps {
                 script {
                     echo 'building the docker image...'
-                    sh 'docker build -t maven-app .'
-                    sh 'docker ps -a'
+                    sh 'docker build -t ${IMAGE_NAME}:${IMAGE_TAG} .'
+                    sh 'docker image ls'
                 }
             }
         }
