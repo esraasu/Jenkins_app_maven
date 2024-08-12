@@ -71,6 +71,7 @@ pipeline {
             steps {
                 script {
                     // Push the Docker image to Docker Hub
+                    sh "docker tag maven-app ${DOCKER_HUB_CREDENTIALS_PSW}/${IMAGE_NAME}:${IMAGE_TAG} "
                     sh "docker push ${DOCKER_HUB_CREDENTIALS_PSW}/${IMAGE_NAME}:${IMAGE_TAG}"
                     echo "Docker image ${IMAGE_NAME}:${IMAGE_TAG} pushed to Docker Hub successfully."
                 }
