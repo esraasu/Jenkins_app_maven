@@ -7,6 +7,7 @@ pipeline {
     environment {
         IMAGE_NAME = "maven-app" // Replace with the image name you want to remove
         IMAGE_TAG = "latest" // Replace with the tag of the image you want to remove
+        DOCKER_HUB_CREDENTIALS = credentials('docker-hub-repo')
     }
     stages {
         stage('Test') {
@@ -53,6 +54,25 @@ pipeline {
                     echo 'building the docker image...'
                     sh 'docker build -t ${IMAGE_NAME}:${IMAGE_TAG} .'
                     sh 'docker image ls'
+                }
+            }
+        }
+        stage('Login to Docker Hub') {
+            steps {
+                script {
+                    // Log in to Docker Hub using stored credentials
+                    sh """
+                    echo "${DOCKER_HUB_CREDENTIALS_PSW}" | docker login -u "${DOCKER_HUB_CREDENTIALS_USR}" --password-stdin
+                    """
+                }
+            }
+        }
+        stage('Push Image to Docker Hub') {
+            steps {
+                script {
+                    // Push the Docker image to Docker Hub
+                    sh "docker push ${IMAGE_NAME}:${IMAGE_TAG}"
+                    echo "Docker image ${IMAGE_NAME}:${IMAGE_TAG} pushed to Docker Hub successfully."
                 }
             }
         }
