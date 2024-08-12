@@ -8,7 +8,8 @@ WORKDIR /usr/app/
 COPY ./target/java-maven-app-*.jar  /usr/app/
 
 # Run the application
-ENTRYPOINT ["java", "-jar", "java-maven-app-*.jar"]
+CMD java -jar java-maven-app-*.jar
+#ENTRYPOINT ["java", "-jar", "java-maven-app-*.jar"]
 
 EXPOSE 9000
 
