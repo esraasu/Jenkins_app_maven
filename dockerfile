@@ -6,10 +6,10 @@ WORKDIR /usr/app/
 
 # Copy the JAR file into the container
 COPY ./target/java-maven-app-*.jar  /usr/app/
-
+RUN chmod 777 /usr/app -R
 # Run the application
-CMD java -jar java-maven-app-*.jar
-#ENTRYPOINT ["java", "-jar", "java-maven-app-*.jar"]
+#CMD java -jar java-maven-app-*.jar
+ENTRYPOINT ["java", "-jar", "java-maven-app-*.jar"]
 
 EXPOSE 8080
 
