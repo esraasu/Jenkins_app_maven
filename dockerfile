@@ -10,5 +10,5 @@ COPY ./target/java-maven-app-*.jar  /app/
 # Run the application
 ENTRYPOINT ["java", "-jar", "ava-maven-app-*.jar"]
 
-EXPOSE 8080
+EXPOSE 9000
 
