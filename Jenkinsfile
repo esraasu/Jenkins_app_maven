@@ -28,8 +28,8 @@ pipeline {
         stage(' Build Docker Image ') {
             steps {
                 script {
-                    echo 'building the docker image...'
-                    sh 'docker build -t maven-app .'
+                    echo 'list container...'
+                    sh 'docker ps -a'
                     
                 }
             }
